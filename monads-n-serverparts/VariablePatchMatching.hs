@@ -1,0 +1,6 @@
+module Main where
+  import Control.Monad    (msum)
+  import Happstack.Server (nullConf, simpleHTTP, ok, dir, path, seeOther)
+
+main :: IO ()
+main = putStrLn "Hello World"
