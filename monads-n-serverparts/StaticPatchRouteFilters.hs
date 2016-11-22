@@ -1,10 +1,10 @@
 module Main where
-  import Control.Monad
-  import Happstack.Server (nullConf, simpleHTTP, ok, dir, seeOther)
+  import Control.Monad    (msum)
+  import Happstack.Server (nullConf, simpleHTTP, ok, dirs, seeOther)
 
   main :: IO ()
   main = simpleHTTP nullConf $
-    msum [ dir "hello"   $ dir "world" $ ok "Hello, World!"
-         , dir "goodbye" $ dir "moon"  $ ok "Goodbye, Moon!"
+    msum [ dirs "hello/world"   $ ok "Hello, World!"
+         , dirs "goodbye/moon"  $ ok "Goodbye, Moon!"
          , seeOther "/hello/world" "/hello/world"
          ]
